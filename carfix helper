@@ -1,0 +1,137 @@
+#### File: index.html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CarFixHelper</title>
+  <style>
+    /* Theme colors: red (#b71c1c), white, gray (#f8f8f8) */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background-color: #b71c1c;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    main {
+      flex: 1;
+      padding: 1rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    #search-section {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    #search-input {
+      width: 60%;
+      max-width: 400px;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    #search-button {
+      background-color: #b71c1c;
+      color: #fff;
+      border: none;
+      padding: 0.55rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 0.5rem;
+    }
+    #search-button:hover {
+      opacity: 0.9;
+    }
+    #help-section details {
+      background-color: #fff;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 2rem;
+    }
+    #help-section summary {
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #pictures {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    #pictures img {
+      width: calc(50% - 1rem);
+      max-width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    footer {
+      background-color: #e0e0e0;
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CarFixHelper</h1>
+  </header>
+
+  <main>
+    <section id="search-section">
+      <h2>Search Car Problems</h2>
+      <input id="search-input" type="text" placeholder="E.g., \"flat tire\" or \"engine noise\"">
+      <button id="search-button">Search Wikipedia</button>
+    </section>
+
+    <section id="help-section">
+      <details>
+        <summary>Help & Instructions</summary>
+        <ul>
+          <li>Enter a car issue into the search box.</li>
+          <li>Click <strong>Search Wikipedia</strong> to open relevant troubleshooting articles.</li>
+          <li>Browse the image gallery for visual cues to identify issues.</li>
+          <li>If you need further assistance, call the number below.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="pictures">
+      <h2>Image Gallery</h2>
+      <!-- Add your images in the `images/` folder -->
+      <img src="images/car1.jpg" alt="Detailed car engine view">
+      <img src="images/car2.jpg" alt="Mechanic repairing a tire">
+      <!-- Add more images as needed -->
+    </section>
+  </main>
+
+  <footer>
+    <p>Need more help? Call us: <strong>(123) 456-7890</strong></p>
+  </footer>
+
+  <script>
+    document.getElementById('search-button').addEventListener('click', () => {
+      const query = document.getElementById('search-input').value.trim();
+      if (!query) {
+        alert('Please enter a search term.');
+        return;
+      }
+      const url = `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(query)}`;
+      window.open(url, '_blank');
+    });
+  </script>
+</body>
+</html>
